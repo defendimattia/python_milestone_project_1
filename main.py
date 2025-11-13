@@ -15,9 +15,9 @@ def keep_playing():
         answer = input("Do you want to keep playing? (Y/N)\n").upper()
     
         if answer == "Y":
-            restart = True
+            return True
         elif answer == "N":
-            restart = False
+            return False
         else:
             print("Sorry, I don't understand, type Y if you want to keep playing or N if you don't")
 
@@ -27,12 +27,12 @@ def keep_playing():
 #                       MAIN GAME CODE                       #
 # ========================================================== #
 
+restart = True
+
 while restart:
-    restart = True
 
     print("Welcome to the Tic Tac Toe game!")
 
-
-    keep_playing()
+    restart = keep_playing()
     print("\n"*3)
 
