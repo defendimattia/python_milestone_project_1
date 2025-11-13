@@ -62,7 +62,7 @@ restart = True
 
 while restart:
 
-    print("Welcome to the Tic Tac Toe game!")
+            print("Welcome to the Tic Tac Toe game!")
 
     symbol_choice()
     print("----------")
