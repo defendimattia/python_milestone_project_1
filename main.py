@@ -1,3 +1,15 @@
+def instructions():
+    print("Table instructions!")
+    print("Here is the cell numbers of the table, remember it before you choose!")
+    print("╭───┬───┬───╮")
+    print("│ 1 │ 2 │ 3 │")
+    print("├───┼───┼───┤")
+    print("│ 4 │ 5 │ 6 │")
+    print("├───┼───┼───┤")
+    print("│ 7 │ 8 │ 9 │")
+    print("╰───┴───┴───╯")
+
+
 def display():
     print("╭───┬───┬───╮")
     print("│   │   │   │")
@@ -39,6 +51,9 @@ def symbol_choice():
     
     return [p1_symbol,p2_symbol]
 
+
+
+
 # ========================================================== #
 #                       MAIN GAME CODE                       #
 # ========================================================== #
@@ -48,7 +63,15 @@ restart = True
 while restart:
 
     print("Welcome to the Tic Tac Toe game!")
+
     symbol_choice()
+    print("----------")
+
+    instructions()
+    print("----------")
+    print("Let's start the game!")
+
+
 
     restart = keep_playing()
     print("\n"*3)
