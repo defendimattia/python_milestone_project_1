@@ -65,6 +65,31 @@ def win_or_draw_check():
         return 0
 
 
+def player_move(player_playing):
+    p_cell = None
+
+    while (
+        p_cell not in ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        or cells[p_cell] != " "
+    ):
+        p_cell = input("Type a number from 1 to 9 to choose an empty cell\n")
+
+        if (
+            p_cell not in ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+            or cells[p_cell] != " "
+        ):
+            print("Wrong input! Type a number from 1 to 9 to choose an empty cell\n")
+
+    if player_playing == 1:
+        cells[p_cell] = p1_symbol
+        player_playing = 2
+    else:
+        cells[p_cell] = p2_symbol
+        player_playing = 1
+
+    return player_playing
+
+
 def reset():
     win_or_draw = False
     player_playing = 1
