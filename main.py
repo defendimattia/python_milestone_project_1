@@ -65,6 +65,22 @@ def win_or_draw_check():
         return 0
 
 
+def reset():
+    win_or_draw = False
+    player_playing = 1
+    cells = {
+        "1": " ",
+        "2": " ",
+        "3": " ",
+        "4": " ",
+        "5": " ",
+        "6": " ",
+        "7": " ",
+        "8": " ",
+        "9": " ",
+    }
+
+    return win_or_draw, player_playing, cells
 
 
 cells = {
@@ -102,7 +118,6 @@ player_playing = 1
 
 while restart:
 
-
     print("Welcome to the Tic Tac Toe game!")
 
     p1_symbol, p2_symbol = symbol_choice()
@@ -111,7 +126,6 @@ while restart:
     instructions()
     print("----------")
     print("Let's start the game!")
-
 
     restart = keep_playing()
     print("\n" * 3)
