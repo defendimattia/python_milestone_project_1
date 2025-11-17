@@ -10,7 +10,7 @@ def instructions():
     print("╰───┴───┴───╯")
 
 
-def display():
+def display(cells):
     print("╭───┬───┬───╮")
     print(f"│ {cells['1']} │ {cells['2']} │ {cells['3']} │")
     print("├───┼───┼───┤")
@@ -55,7 +55,7 @@ def symbol_choice():
     return [p1_symbol, p2_symbol]
 
 
-def win_or_draw_check():
+def win_or_draw_check(p1_symbol, cells, winning_lines):
 
     for a, b, c in winning_lines:
         if cells[a] == cells[b] == cells[c] and cells[a] in ("X", "O"):
@@ -65,20 +65,16 @@ def win_or_draw_check():
         return 0
 
 
-def player_move(player_playing):
+def player_move(player_playing, p1_symbol, p2_symbol, cells):
     p_cell = None
 
-    while (
-        p_cell not in ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-        or cells[p_cell] != " "
-    ):
+    while p_cell not in cells or cells[p_cell] != " ":
         p_cell = input("Type a number from 1 to 9 to choose an empty cell\n")
 
-        if (
-            p_cell not in ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-            or cells[p_cell] != " "
-        ):
-            print("Wrong input! Type a number from 1 to 9 to choose an empty cell\n")
+        if p_cell not in cells:
+            print("Invalid number! Choose from 1 to 9.")
+        elif cells[p_cell] != " ":
+            print("Cell already occupied! Choose another one.")
 
     if player_playing == 1:
         cells[p_cell] = p1_symbol
@@ -154,25 +150,25 @@ while restart:
     print("Let's start the game!")
 
     while not win_or_draw:
+        display(cells)
         print(f"Player {player_playing} turn!")
 
-        display()
-        player_playing = player_move(player_playing)
+        player_playing = player_move(player_playing, p1_symbol, p2_symbol, cells)
 
-        check = win_or_draw_check()
+        check = win_or_draw_check(p1_symbol, cells, winning_lines)
 
         if check == 1:
-            display()
+            display(cells)
             print("Player 1 wins!")
             win_or_draw = True
 
         elif check == 2:
-            display()
+            display(cells)
             print("Player 2 wins!")
             win_or_draw = True
 
         elif check == 0:
-            display()
+            display(cells)
             print("Draw!")
             win_or_draw = True
 
