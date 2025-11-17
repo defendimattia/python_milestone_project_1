@@ -37,6 +37,7 @@ def keep_playing():
 
 
 def symbol_choice():
+
     p1_symbol = None
     p2_symbol = None
 
@@ -54,9 +55,17 @@ def symbol_choice():
     return [p1_symbol, p2_symbol]
 
 
-# ========================================================== #
-#                       MAIN GAME CODE                       #
-# ========================================================== #
+def win_or_draw_check():
+
+    for a, b, c in winning_lines:
+        if cells[a] == cells[b] == cells[c] and cells[a] in ("X", "O"):
+            return 1 if cells[a] == p1_symbol else 2
+
+    if " " not in cells.values():
+        return 0
+
+
+
 
 cells = {
     "1": " ",
@@ -70,18 +79,39 @@ cells = {
     "9": " ",
 }
 
+winning_lines = [
+    ("1", "2", "3"),
+    ("4", "5", "6"),
+    ("7", "8", "9"),
+    ("1", "4", "7"),
+    ("2", "5", "8"),
+    ("3", "6", "9"),
+    ("1", "5", "9"),
+    ("3", "5", "7"),
+]
+
+
 restart = True
+win_or_draw = False
+player_playing = 1
+
+# ========================================================== #
+#                       MAIN GAME CODE                       #
+# ========================================================== #
+
 
 while restart:
 
+
     print("Welcome to the Tic Tac Toe game!")
 
-    symbol_choice()
+    p1_symbol, p2_symbol = symbol_choice()
     print("----------")
 
     instructions()
     print("----------")
     print("Let's start the game!")
+
 
     restart = keep_playing()
     print("\n" * 3)
