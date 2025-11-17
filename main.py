@@ -14,6 +14,7 @@ def instructions():
 
 
 def display(cells, p1_symbol, p2_symbol):
+    clear_screen()
     print("╭───┬───┬───╮")
     print(f"│ {cells['1']} │ {cells['2']} │ {cells['3']} │   Player 1 = {p1_symbol}")
     print(f"├───┼───┼───┤   Player 2 = {p2_symbol}")
@@ -157,7 +158,6 @@ while restart:
     p1_symbol, p2_symbol = symbol_choice()
 
     while not win_or_draw:
-        clear_screen()
         display(cells, p1_symbol, p2_symbol)
         print("\n")
         print(f"Player {player_playing} turn!")
@@ -168,7 +168,6 @@ while restart:
         check = win_or_draw_check(p1_symbol, cells, winning_lines)
 
         if check == 1:
-            clear_screen()
             display(cells, p1_symbol, p2_symbol)
             print("\n")
             print("Player 1 WINS!")
@@ -177,7 +176,6 @@ while restart:
             win_or_draw = True
 
         elif check == 2:
-            clear_screen()
             display(cells, p1_symbol, p2_symbol)
             print("\n")
             print("Player 2 WINS!")
@@ -186,7 +184,6 @@ while restart:
             win_or_draw = True
 
         elif check == 0:
-            clear_screen()
             display(cells, p1_symbol, p2_symbol)
             print("\n")
             print("DRAW!")
